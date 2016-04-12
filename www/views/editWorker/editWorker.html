@@ -1,0 +1,43 @@
+<ion-view view-title="Edit Employee" cache-view="false">
+    <ion-content class="padding-top">
+
+        <ion-list>
+            <div class="item item-divider"><b>Edit: {{data.currWorkerName}}</b></div>
+
+            <ion-item class="item item-avatar item-button-right">
+                <img src="img/empty_avatar.jpg">
+                <h2><b>Email: </b>{{data.currWorkerEmail}}</h2>
+                <p ng-style="{ color:data.currWorkerClockedIn == 'true' ? 'green' : 'red' }">{{data.currWorkerClockedIn == "true" ? "Clocked-In Right Now" : "Not Clocked-In Right Now"}}</p>
+                <button ng-click="goToTimeSheet(data.currWorkerEdited)" class="button button-clear button-calm button-large icon-left ion-clock"></button>
+            </ion-item>
+
+
+
+            <div class="item item-divider">List of Allowed Locations To Clock-In From</div>
+            <ion-list>
+                <ion-item item-icon-left class="item" ng-repeat="loc in data.allowedCoordinates">
+                    <i class="icon ion-navigate"></i>
+                    <span class="text-note">{{loc.address}}</span>
+                    <ion-option-button class="button-assertive" ng-click="deleteAddress(loc.address)">Delete</ion-option-button>
+
+                </ion-item>
+            </ion-list>
+            <div class="ion-item">
+                <button ng-click="addLocation(); showDiv=true" ng-show="!showDiv" class="button button-block button-large button-royal ion-plus-round"> Add Location</button>
+            </div>
+
+        </ion-list>
+        <div ng-show="map">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input name="txtAddress" type="search" placeholder="For Example: NYC, 57th street 8th Avenue" ng-model="data.address" required>
+            </label>
+            <button ng-click="codeAddress(map)" class="button button-block button-calm ion-search"> Find Address </button>
+            <button ng-click="addNewAddress()" class="button button-block button-balanced ion-checkmark-round"> Save Location</button>
+        </div>
+        <div class="text-center" id="map" data-tap-disabled="true" ng-show="map"></div>
+        <div class="spacer" style="height: 60px;"></div>
+        <button ng-click="backToDash();" class="button button-block button-assertive">Back</button>
+        <div class="spacer" style="height: 60px;"></div>
+    </ion-content>
+</ion-view>

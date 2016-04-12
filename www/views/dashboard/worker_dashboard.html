@@ -1,0 +1,27 @@
+<ion-view view-title="Dashboard" hide-back-button="true" cache-view="false">
+    <ion-content class="padding-top">
+        <ion-list>
+            <div class="ion-item">
+                <div class="item item-divider">Your Summary</div>
+                <ion-item class="item item-avatar">
+                    <img class="avatar" src="img/empty_avatar.jpg">
+                    <h2><b>{{data.userName}}</b></h2>
+                </ion-item>
+            </div>
+            <div class="ion-item">
+                <button ng-click="ClockIn();" ng-show="showClockIn === true" class="button button-block button-large button-balanced"><i class="button button-icon ion-arrow-down-a"></i>Clock In</button>
+            </div>
+            <div class="ion-item">
+                <button ng-click="ClockOut()" ng-show="showClockOut === true" class="button button-block button-large button-positive"><i class="button button-icon ion-arrow-up-a"></i>Clock Out</button>
+            </div>
+            <div class="ion-item">
+
+            </div>
+        </ion-list>
+
+
+        <div class="text-center" id="map" data-tap-disabled="true"></div>
+
+
+    </ion-content>
+</ion-view>

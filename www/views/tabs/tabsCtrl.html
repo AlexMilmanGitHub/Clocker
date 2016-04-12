@@ -1,0 +1,13 @@
+<ion-view title="Tabs Controller">
+    <ion-tabs class="tabs-striped tabs-color-positive tabs-icon-top">
+        <ion-tab title="Dashboard" icon="ion-home" href="#/tabsCtrl/worker_dashboard">
+            <ion-nav-view name="tab1"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Time Sheet" icon="ion-android-list" hidden="{{isWorker()}}" href="/tabsCtrl/timeSheet">
+            <ion-nav-view name="tab2"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Settings" icon="ion-gear-a" href="/tabsCtrl/settings">
+            <ion-nav-view name="tab3"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

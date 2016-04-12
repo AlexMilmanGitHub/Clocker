@@ -1,0 +1,32 @@
+<ion-view view-title="Dashboard-Employer" hide-back-button="true" cache-view="false">
+    <ion-content class="padding-top">
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <div class="item item-divider">Your Summary</div>
+            <ion-item class="item item-avatar">
+                <img class="avatar" src="img/avatar1.png">
+                <h2><b>{{data.userName}}</b></h2>
+                <h2>{{numWorkers > 0 ? "You Have " + numWorkers + " Employees" : "You Don't Have Any Employees Yet..."}}</h2>
+                <h2 ng-style="{ color: numWorkersClockedIn > 0 ? 'green' : 'red' }">Employees Clocked-In: <b>{{numWorkersClockedIn}}</b></h2>
+</ion-item>
+            <div class="ion-item">
+                <button ng-click="addWorker()" class="button button-block button-large button-balanced ion-plus-round"> Add An Employee</button>
+            </div>
+            <div class="item item-divider">List Of Your Employees</div>
+
+            <ion-item class="item item-avatar" menu-close="" ng-repeat="worker in workersArray" ng-click="editWorker(worker)">
+                <img src="img/empty_avatar.jpg">
+                <h2><b>{{worker.value.name}}</b></h2>
+                <h2>{{worker.value.email}}</h2>
+                <p ng-style="{ color:worker.value.isClockedIn == 'true' ? 'green' : 'red' }">{{worker.value.isClockedIn == "true" ? "Clocked-In Right Now" : "Not Clocked-In Right Now"}}</p>
+
+                <ion-option-button class="button-energized" ng-click="editWorker(worker)">Edit</ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="deleteWorker(worker)">Delete</ion-option-button>
+            </ion-item>
+
+
+
+        </ion-list>
+    </ion-content>
+</ion-view>
