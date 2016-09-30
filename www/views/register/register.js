@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App').controller('registerController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('registerController', function ($scope, $location, $ionicHistory, Auth, Utils) {
 
   $scope.register = function(user) {
     if(angular.isDefined(user)){
@@ -7,7 +7,7 @@ angular.module('App').controller('registerController', function ($scope, $state,
     Auth.register(user)
       .then(function() {
          Utils.hide();
-         console.log("Before Log-In:" + JSON.stringify(user));
+         //console.log("Before Log-In:" + JSON.stringify(user));
          Utils.alertshow("Successfully","The User was Successfully Created.");
          $location.path('/');
       }, function(err) {
@@ -17,5 +17,7 @@ angular.module('App').controller('registerController', function ($scope, $state,
     }
   };
 
-}
-);
+    $scope.back = function(){
+        $ionicHistory.goBack();
+    };
+});

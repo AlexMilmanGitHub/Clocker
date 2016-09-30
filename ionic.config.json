@@ -1,0 +1,20 @@
+{
+  "name": "clocker",
+  "app_id": "6a1e929f",
+  "v2": false,
+  "typescript": false,
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+
+  "watch": {
+    "sass": ["scss/**/*.scss"],
+    "html": ["www/**/*.html"],
+    "livereload": [
+      "www/**/*.html",
+      "www/**/*.js",
+      "www/**/*.css"
+    ]
+  }
+}

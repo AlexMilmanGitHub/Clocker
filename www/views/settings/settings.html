@@ -1,6 +1,18 @@
 <ion-view title="Settings">
-    <ion-content padding="'true'" class="has-header has-footer">
-        <div class="spacer" style="width: 300px; height: 26px;"></div>
-         <button class="button button-assertive button-block button-large" ng-click="logOut()"><i class="button button-icon ion-paper-airplane"></i>Log Out</button>
+    <ion-content  class="has-header has-footer">
+       
+         <button class="button button-energized button-block button-large" ng-click="logOut()"><i class="button button-icon largeIcon ion-paper-airplane"></i>Log Out</button>
+        <div class="card">
+        <div class="item item-divider">Change Your Avatar</div>
+     
+            <div class="pickAvatar" ng-repeat="avatar in avatarArr" ng-class="{'selectedAvatar':avatar == selectedAvatar}">
+                 <img ng-src={{avatar}} ng-click="toggle(avatar)" >
+            </div>
+            
+        </div>
+        
+        <button class="button button-royal button-block button-large" ng-click="changePassword()"><i class="button button-icon largeIcon ion-ios-loop-strong"></i>Change My Password</button>
+        
+        <button class="button button-assertive button-block button-large" ng-click="deleteUser()"><i class="button button-icon largeIcon ion-trash-a"></i>Delete My Account</button>
     </ion-content>
 </ion-view>

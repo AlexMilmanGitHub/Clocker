@@ -1,15 +1,14 @@
 'Use Strict';
-angular.module('App').controller('loginController', function ($scope, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $firebaseObject, $window, Auth, FURL, Utils) {
+angular.module('App').controller('loginController', function ($scope, $state, $localStorage, $firebaseObject, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
   var userkey = "";
-    
-    
+        
   ref.onAuth(function(authData) {
   if (authData) {
-    console.log("User " + authData.uid + " is logged in with " + authData.provider);
+    //console.log("User " + authData.uid + " is logged in with " + authData.provider);
        
       ref.child('profiles').orderByChild("id").equalTo(authData.uid).on("child_added", function(snapshot) {
-        console.log(snapshot.key());
+        //console.log(snapshot.key());
 
         userkey = snapshot.key();
                   
@@ -17,23 +16,25 @@ angular.module('App').controller('loginController', function ($scope, $state, $c
    
         obj.$loaded()
           .then(function(data) {
-            console.log(data === obj); // true
-            console.log(obj.email);
+          //  console.log(data === obj); // true
+        //    console.log(obj.email);
             $localStorage.email = obj.email;
             $localStorage.userkey = userkey;
             userTypeGlobal = obj.userType;
-
+            
               Utils.hide();
-              $state.go('tabsCtrl.dashboard'); //TODO GO TO USER TPYE DASHBOARD
-              console.log("Starter page",userTypeGlobal);
+         
+               $state.go('tabsCtrl.dashboard', {}, { reload: true }); 
+               
+        //      console.log("Starter page",userTypeGlobal);
 
           })
           .catch(function(error) {
-            console.error("Error:", error);
+            //console.error("Error:", error);
           });});
           
   } else {
-    console.log("User is logged out");
+    //console.log("User is logged out");
 
   }
 });
@@ -43,10 +44,11 @@ angular.module('App').controller('loginController', function ($scope, $state, $c
     Utils.show();
     Auth.login(user)
       .then(function(authData) {
+    
       //console.log("user id:" + JSON.stringify(authData));
 
       ref.child('profiles').orderByChild("id").equalTo(authData.uid).on("child_added", function(snapshot) {
-        console.log(snapshot.key());
+        //console.log(snapshot.key());
 
         userkey = snapshot.key();
                   
@@ -54,16 +56,18 @@ angular.module('App').controller('loginController', function ($scope, $state, $c
    
         obj.$loaded()
           .then(function(data) {
-            console.log(data === obj); // true
-            console.log(obj.email);
-            $localStorage.isClockedIn = false;
+            //console.log(data === obj); // true
+            //console.log(obj.email);
+            //$localStorage.isClockedIn = false;
             $localStorage.email = obj.email;
             $localStorage.userkey = userkey;
             userTypeGlobal = obj.userType;
-
+               
               Utils.hide();
-              $state.go('tabsCtrl.dashboard'); //TODO GO TO USER TPYE DASHBOARD
-              console.log("Starter page", userTypeGlobal);
+               
+            $state.go('tabsCtrl.dashboard', {}, { reload: true });
+       
+              //console.log("Starter page", userTypeGlobal);
 
           })
           .catch(function(error) {
@@ -73,7 +77,7 @@ angular.module('App').controller('loginController', function ($scope, $state, $c
 
       }, function(err) {
         Utils.hide();
-         Utils.errMessage(err);
+         Utils.alertshow("Wrong Email/Password","Make Sure You Have The Right Email and Password");
       });
     }
   };

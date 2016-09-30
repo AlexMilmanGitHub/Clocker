@@ -48,19 +48,35 @@
         <div class="form-error" ng-message="pattern">Please only use letters and numbers.</div>
       </div>
         
-        <label class="item item-input item-floating-label">
+
             <ion-radio name="radioWorker" ng-model="user.userType" ng-value="'WORKER'" ng-required="!user.userType">I'm an Employee...</ion-radio>
-            <ion-radio name="radioEmp"  ng-model="user.userType" ng-value="'EMPLOYER'" ng-required="!user.userType">I'm an Employer...</ion-radio>
+            
+            <ion-radio name="radioEmp"  ng-model="user.userType" ng-value="'EMPLOYER'" ng-required="!user.userType">I'm The Boss...</ion-radio>
+        
+        
+         <div class="form-errors" ng-messages="registerForm.radioWorker.$error && registerForm.radioEmp.$error" ng-if="registerForm.$submitted">
+            <div class="form-error" ng-message="required">Are You an Employer Or an Employee?</div>
+        </div>
+        
+        <label class="item item-input item-floating-label" ng-show="user.userType === 'EMPLOYER'">
+            <span class="input-label">Company Name</span>
+            <input name="txtCompName" type="text" ng-model="user.companyName" placeholder="Company Name"
+            ng-minlength="2"
+            ng-maxlength="30"
+            ng-required="user.userType === 'EMPLOYER'">
         </label>
         
-        <div class="form-errors" ng-messages="registerForm.radioWorker.$error && registerForm.radioEmp.$error" ng-if="registerForm.$submitted">
-            <div class="form-error" ng-message="required">Are You an Employer Or an Employee?</div>
+        <div class="form-errors" ng-messages="registerForm.txtCompName.$error" ng-if="registerForm.$submitted && user.userType === 'EMPLOYER'">
+            <div class="form-error" ng-message="required">You Must Enter a Company Name.</div>
+            <div class="form-error" ng-message="minlength">Company Name is Too Short.</div>
+            <div class="form-error" ng-message="maxlength">Company Name is Too Long.</div>
         </div>
         
     </div>
     <div class="padding-top">
-      <input type="submit" value="Register" class="button button-block button-positive"/>
+      <input type="submit" value="Register" class="button button-block button-large button-positive"/>
     </div>
   </form>
+    <button ng-click="back();" class="button button-block button-assertive">Cancel</button>
   </ion-content>
 </ion-view>

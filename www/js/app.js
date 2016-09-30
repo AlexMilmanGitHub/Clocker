@@ -2,7 +2,7 @@
 
 var userTypeGlobal = null;
 
-angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages'])
+angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages','ngSanitize','ngCsv'])
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     
       $ionicConfigProvider.tabs.position('bottom');
@@ -38,15 +38,15 @@ $stateProvider
       views: {
         'tab1': {
           templateUrl:function(){
-              console.log("ROUTING...");
+            //  console.log("ROUTING...");
               if(userTypeGlobal === "WORKER"){
-                  console.log("ROUTE: WORKER...");
-                  console.log("User Type is " + userTypeGlobal +". Moving to WORKER Dashboard.");
+              //    console.log("ROUTE: WORKER...");
+                //  console.log("User Type is " + userTypeGlobal +". Moving to WORKER Dashboard.");
               return 'views/dashboard/worker_dashboard.html';
             }
               else if(userTypeGlobal === "EMPLOYER"){
-                  console.log("ROUTE: EMPLOYER...");
-                  console.log("User Type is " + userTypeGlobal +". Moving to EMPLOYER Dashboard.");
+                //  console.log("ROUTE: EMPLOYER...");
+                //  console.log("User Type is " + userTypeGlobal +". Moving to EMPLOYER Dashboard.");
                   return 'views/dashboard/employer_dashboard.html';
               }
           },

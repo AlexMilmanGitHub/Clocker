@@ -1,9 +1,42 @@
-/* Empty. Add your own CSS if you like */
 
-.larger {
-    font-size: 120px;
+/* Empty. Add your own CSS if you like */
+input {
+    font-size: 18px;
+    font-weight: bold;
 }
 
+.item-radio {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #0DFF92;
+}
+
+input[type=radio]:checked ~ label{
+  color: #0DFF92;
+}
+
+input-value {
+    color:white;
+}
+
+.larger {
+    font-size: 30px;
+}
+
+.addEmpBtn{
+    background-color: rgba(54, 177, 153, 0.83);
+    color: white;
+    font-weight: bold;
+}
+
+.timeSheetBtn{
+
+     font-size:60px;
+    padding-top: 30px;
+}
 
 /** Error Messages **/
 
@@ -45,8 +78,71 @@ label.item.valid-lr {
    font-size: 30px;
 }
 
-.avatar {
-    height: 100% !important;
-    width: 100% !important;
+.largeIcon {
+   font-size: 50px;
+}
 
+
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.clock{
+    width: 50%; 
+    height:auto;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clock:active { 
+    opacity: 0.3;
+}
+
+p.uid{
+    color: #E18728;
+}
+
+.item{
+    background:rgba(173, 205, 226, 0.27);
+    overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: normal ;
+}
+
+.item-divider{
+    background:rgba(0, 104, 245, 0.53);
+    
+}
+
+.item-divider-radius{
+    background:rgba(98, 124, 235, 0.38);
+    
+}
+.pickAvatar{
+    max-height: 33%;
+    max-width: 33%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    background:rgba(173, 205, 226, 0.27);
+}
+
+
+.card{
+     background:rgba(173, 205, 226, 0.27);
+}
+.selectedAvatar{
+    border-style: solid;
+    border-width: medium;
+    border-color: cadetblue;
+}
+
+.buttonActive{
+    opacity: 0.7;
 }

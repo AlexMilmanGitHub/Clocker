@@ -5,7 +5,7 @@ angular.module('App').controller('tabsCtrl', function ($scope, $localStorage,FUR
     var ref = new Firebase(FURL);
     $scope.data = {};
     // $scope.isWorker = true;
-    console.log("TABS CTRL START"); 
+    //console.log("TABS CTRL START"); 
     
 //    if (userTypeGlobal === "WORKER") {
 //            $scope.isWorker = false;
@@ -17,8 +17,8 @@ angular.module('App').controller('tabsCtrl', function ($scope, $localStorage,FUR
 //        }
     
     
-    $scope.isWorker = function () { //TODO THIS IS CALLED WAY TOO MANY TIMES
-        console.log(FbData.getCurrUserType());
+    $scope.isWorker = function () {
+        //console.log(FbData.getCurrUserType());
         if(FbData.getCurrUserType() === "WORKER"){
             return false;
         }

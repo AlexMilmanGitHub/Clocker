@@ -14,5 +14,4 @@ angular.module('App').factory('LocalStorage', function ($window) {
       return JSON.parse($window.localStorage[key] || '{}');
     }
   }
-  
 });

@@ -1,4 +1,4 @@
-angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup) {
+angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup, $q) {
 
 	var Utils = {
 
@@ -16,40 +16,60 @@ angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup) {
       $ionicLoading.hide();
     },
 
-		alertshow: function(tit,msg){
-			var alertPopup = $ionicPopup.alert({
-				title: tit,
-				template: msg
-			});
-			alertPopup.then(function(res) {
+    alertshow: function(tit,msg){
+        var alertPopup = $ionicPopup.alert({
+            title: tit,
+            template: msg
+        });
+        alertPopup.then(function(res) {
 
-			});
-		},
+        });
+    },
 
-		errMessage: function(err) {
+    alertshowWithPromise: function(tit,msg){
+        var alertPopup = $ionicPopup.alert({
+            title: tit,
+            template: msg
+        });
+        return alertPopup;
+    },
+        
+    errMessage: function(err) {
 
-	    var msg = "Unknown Error...";
+    var msg = "Unknown Error...";
 
-	    if(err && err.code) {
-	      switch (err.code) {
-	        case "EMAIL_TAKEN":
-	          msg = "This Email has been taken."; break;
-	        case "INVALID_EMAIL":
-	          msg = "Invalid Email."; break;
+    if(err && err.code) {
+          switch (err.code) {
+            case "EMAIL_TAKEN":
+              msg = "This Email has been taken."; break;
+            case "INVALID_EMAIL":
+              msg = "Invalid Email."; break;
           case "NETWORK_ERROR":
-	          msg = "Network Error."; break;
-	        case "INVALID_PASSWORD":
-	          msg = "Invalid Password."; break;
-	        case "INVALID_USER":
-	          msg = "Invalid User."; break;
-	      }
-	    }
-			Utils.alertshow("Error",msg);
+              msg = "Network Error."; break;
+            case "INVALID_PASSWORD":
+              msg = "Invalid Password."; break;
+            case "INVALID_USER":
+              msg = "Invalid User."; break;
+          }
+    }
+        Utils.alertshow("Error",msg);
 	},
 
 
+    confirmSelection: function(title, msg){
+      var confirmPopup = $ionicPopup.confirm({
+				title: title,
+				template: msg
+			});
+			confirmPopup.then(function(res) {
+                if(res) {
+                //console.log('Selection Confirmed');
+               }else {
+                //console.log('Selection Canceled');
+             }
+			});  
+    },
   };
-
 	return Utils;
 
 });

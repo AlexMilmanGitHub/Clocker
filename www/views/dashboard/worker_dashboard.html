@@ -1,26 +1,41 @@
 <ion-view view-title="Dashboard" hide-back-button="true" cache-view="false">
-    <ion-content class="padding-top">
+    <ion-content>
         <ion-list>
-            <div class="ion-item">
+            <div class="card">
                 <div class="item item-divider">Your Summary</div>
-                <ion-item class="item item-avatar">
-                    <img class="avatar" src="img/empty_avatar.jpg">
-                    <h2><b>{{data.userName}}</b></h2>
+                
+                <ion-item class="item-thumbnail-left">
+                    <img ng-src={{data.currUser.avatar}}>
+    
+                    <h2 style="font-size:large"><b>{{data.currUser.name}}</b></h2>
+                    <h2><b>Email:</b> {{data.currUser.email}}</h2>
+                    <p class="uid"><b>User ID: {{data.currUser.userId}}</b></p>
+                    <p><b>Company Name: {{data.currUser.companyName}}</b></p>
+                    <p style="color:black"><b>Worked: <span style="color:green">{{timeWorkedThisMonth(data.currUser.clock)}}</span> This Month</b></p>
                 </ion-item>
-            </div>
-            <div class="ion-item">
-                <button ng-click="ClockIn();" ng-show="showClockIn === true" class="button button-block button-large button-balanced"><i class="button button-icon ion-arrow-down-a"></i>Clock In</button>
-            </div>
-            <div class="ion-item">
-                <button ng-click="ClockOut()" ng-show="showClockOut === true" class="button button-block button-large button-positive"><i class="button button-icon ion-arrow-up-a"></i>Clock Out</button>
-            </div>
-            <div class="ion-item">
-
-            </div>
+             
+                </div>
+                <img ng-show="showClockIn === true" class="clock img center" ng-click="ClockIn();"   src="img/clockInGreen.png">
+    
+                <img ng-show="showClockOut === true" class="clock img center" ng-click="ClockOut()"   src="img/clockOutBlue.png">
+  
+    
+            
+        
         </ion-list>
-
-
-        <div class="text-center" id="map" data-tap-disabled="true"></div>
+            <div class="card" ng-show="data.currUser.allowedCoordinates">   
+                <div class="item item-divider" >Allowed Locations To Clock-In/Clock-Out</div>
+                    <ion-list>
+                        <ion-item item-icon-left class="item" ng-repeat="loc in data.currUser.allowedCoordinates">
+                            <i class="icon ion-navigate"></i>
+                            <span class="text-note">{{loc.address}}</span>
+                            <p> Radius: {{loc.radius}}(km) / {{kmToMile(loc.radius)}}(miles)</p>
+                        </ion-item>
+                    </ion-list>
+                </div>
+        <div class="item item-divider">You Are Here</div>
+        
+        <div class="text-center card" id="map" data-tap-disabled="true"></div>
 
 
     </ion-content>

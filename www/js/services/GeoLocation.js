@@ -1,4 +1,4 @@
-angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $ionicPlatform, $q, FbData) {
+angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $q, FbData, $ionicLoading, Utils) {
     var geocoder = new google.maps.Geocoder();
 	
     var Geo = {
@@ -41,7 +41,8 @@ angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $ioni
           
             console.log("COORDINATE TO MATCH: lat:" + coordinate.coordinates.lat + " long:" + coordinate.coordinates.long);
             console.log("DISTANCE BETWEEN:" + (google.maps.geometry.spherical.computeDistanceBetween(p1, p2)));
-            if((google.maps.geometry.spherical.computeDistanceBetween(p1, p2)) <= 100) //check if the distance if less than 100 meters
+
+            if((google.maps.geometry.spherical.computeDistanceBetween(p1, p2)) <= (coordinate.radius*1000)) //check if the distance if less than radius in meters
                 res = true;
         });
         return res;
@@ -72,11 +73,13 @@ angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $ioni
             
             var posOptions = {
                 enableHighAccuracy: true,
-                timeout: 20000,
+                timeout: 10000,
                 maximumAge: 0
             };
-
-            $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+          
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
 
                 var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -89,7 +92,7 @@ angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $ioni
 
                 var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-                console.log("GOOGLE MAP CREATED");
+           //     console.log("GOOGLE MAP CREATED");
 
                 var marker = new google.maps.Marker({
                     position: myLatlng,
@@ -102,6 +105,8 @@ angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $ioni
                 q.resolve(map);
 
             }, function (err) {
+                $ionicLoading.hide();
+                Utils.alertshow("GPS Error","Could Not Get Current Geo-Position");
                 console.log(err);
             });
             return q.promise;
