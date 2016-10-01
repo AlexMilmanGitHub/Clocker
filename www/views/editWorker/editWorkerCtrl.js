@@ -5,7 +5,7 @@ This controller handles the edit of a worker including mainly location edit.
 */
 
 'Use Strict';
-angular.module('App').controller('editWorkerCtrl', function ($scope, $state, $localStorage, $q, $ionicPopup, $ionicHistory, , , Auth, FURL, Utils, TimeManager, $ionicLoading, FbData, GeoLocation) {
+angular.module('App').controller('editWorkerCtrl', function ($scope, $state, $localStorage, $q, $ionicPopup, $ionicHistory, Auth, FURL, Utils, TimeManager, $ionicLoading, FbData, GeoLocation) {
     //console.log(Auth.currentWorkerToEditKey);
     
     var KM_TO_MILES = 0.621371;
