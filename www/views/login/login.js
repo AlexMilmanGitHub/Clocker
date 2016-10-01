@@ -1,3 +1,8 @@
+/*
+login.js
+Creates the loginController Controller.
+This controller handles user login & Authentication with the Auth Factory.
+*/
 'Use Strict';
 angular.module('App').controller('loginController', function ($scope, $state, $localStorage, $firebaseObject, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);

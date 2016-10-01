@@ -1,3 +1,10 @@
+/*
+TimeManager.js
+Creates the TimeManager Factory which is used to manipulate time data and deduce the time worked this month.
+
+*/
+
+
 angular.module('App').factory('TimeManager', function() {
     
     var msToTime = function(duration) {

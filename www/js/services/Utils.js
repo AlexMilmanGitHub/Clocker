@@ -1,3 +1,10 @@
+/*
+Utils.js
+Creates the Utils Factory which is used to display popup alerts and pompts.
+
+*/
+
+
 angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup, $q) {
 
 	var Utils = {

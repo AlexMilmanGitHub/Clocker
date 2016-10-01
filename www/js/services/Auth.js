@@ -1,3 +1,10 @@
+/*
+Auth.js
+Creates the Auth Factory which handles Authentication, login, logout and registration.
+
+*/
+
+
 angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArray, $firebaseObject, Utils) {
 
 	var ref = new Firebase(FURL);

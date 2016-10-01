@@ -1,3 +1,9 @@
+/*
+timeSheetCtel.js
+Creates the timeSheetCtrl Controller.
+This controller handles user time-sheet, including filtering and CSV exporting.
+*/
+
 'Use Strict';
 angular.module('App').controller('timeSheetCtrl', function ($scope, $state, $filter,$cordovaOauth, $cordovaFile, $cordovaDevice, $cordovaEmailComposer, $q, $localStorage, $location, $http, $ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, FbData, Utils, $ionicLoading, $ionicPlatform, $ionicHistory, $rootScope, GeoLocation, TimeManager) {
 

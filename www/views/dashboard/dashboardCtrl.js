@@ -1,3 +1,10 @@
+/*
+dashboardCtrl.js
+Creates the dashboardCtrl Controller, which acts as the main controller of the application.
+This controller handles both the employer and worker dashboards, binds data to the view and makes available methods to handle Clock-In/ Clock-Out and display user data. 
+*/
+
+
 'Use Strict';
 angular.module('App').controller('dashboardCtrl', function ($scope, $state, $localStorage, $ionicPopup, Auth, Utils, $ionicLoading, $ionicPlatform, GeoLocation, FbData, TimeManager) {
     

@@ -1,6 +1,11 @@
+/*
+forget.js
+Creates the forgotController Controller.
+This controller handles password reset. 
+*/
 'Use Strict';
 angular.module('App').controller('forgotController', function ($scope, $localStorage, $location, $ionicHistory, Auth, FURL, Utils) {
-  var ref = new Firebase(FURL);
+
   $scope.resetpassword = function(user) {
       if(angular.isDefined(user)){
       Auth.resetpassword(user)

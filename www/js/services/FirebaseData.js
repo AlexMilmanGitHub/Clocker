@@ -1,3 +1,10 @@
+/*
+FirebaseData.js
+Creates the FbData Factory which handles integration to Firebase. 
+This Factory acts as a connection to the Application's Data Layer.
+
+*/
+
 angular.module('App').factory('FbData', function (FURL, $q, $localStorage, $firebaseArray, $firebaseObject) {
 
     var milSecInHour = 3600000; // 1000 * 60 * 60

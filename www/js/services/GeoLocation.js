@@ -1,3 +1,9 @@
+/*
+GeoLocation.js
+Creates the GeoLocation Factory which handles the GPS, Maps and Location Logic.
+
+*/
+
 angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $q, FbData, $ionicLoading, Utils) {
     var geocoder = new google.maps.Geocoder();
 	

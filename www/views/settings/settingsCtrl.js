@@ -1,3 +1,9 @@
+/*
+settingsCtrl.js
+Creates the settingsCtrl Controller.
+This controller handles user settings and incuding logout, changing password and Account deletion.
+*/
+
 'Use Strict';
 angular.module('App').controller('settingsCtrl', function($scope, $location, $window, $state, $localStorage, $ionicPopup, Auth, FbData, FURL, Utils) {
     

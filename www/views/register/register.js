@@ -1,3 +1,8 @@
+/*
+register.js
+Creates the registerController Controller.
+This controller handles user registration.
+*/
 'Use Strict';
 angular.module('App').controller('registerController', function ($scope, $location, $ionicHistory, Auth, Utils) {
 
