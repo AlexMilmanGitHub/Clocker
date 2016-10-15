@@ -26,10 +26,10 @@ angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $q, F
 	            currentLocationLong = position.coords.longitude;
 
 	            q.resolve({ "lat": position.coords.latitude, "long": position.coords.longitude });
-	            console.log("current position is: lat:" + currentLocationLat + ", long:" + currentLocationLong);
+	            //console.log("current position is: lat:" + currentLocationLat + ", long:" + currentLocationLong);
 
 	        }, function (err) {
-	            console.log(err);
+	            //console.log(err);
 	        });
 	        return q.promise;
 	    },
@@ -39,14 +39,14 @@ angular.module('App').factory('GeoLocation', function($cordovaGeolocation, $q, F
         var p1;
 
         var p2 = new google.maps.LatLng(currCoordinates.lat, currCoordinates.long);
-        console.log("p2:" + p2);
+        //console.log("p2:" + p2);
 
         angular.forEach(FbData.getCurrUserAllowedCoordinates(), function(coordinate){
           
             p1 = new google.maps.LatLng(coordinate.coordinates.lat, coordinate.coordinates.long);
           
-            console.log("COORDINATE TO MATCH: lat:" + coordinate.coordinates.lat + " long:" + coordinate.coordinates.long);
-            console.log("DISTANCE BETWEEN:" + (google.maps.geometry.spherical.computeDistanceBetween(p1, p2)));
+            //console.log("COORDINATE TO MATCH: lat:" + coordinate.coordinates.lat + " long:" + coordinate.coordinates.long);
+            //console.log("DISTANCE BETWEEN:" + (google.maps.geometry.spherical.computeDistanceBetween(p1, p2)));
 
             if((google.maps.geometry.spherical.computeDistanceBetween(p1, p2)) <= (coordinate.radius*1000)) //check if the distance if less than radius in meters
                 res = true;
